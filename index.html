@@ -91,7 +91,13 @@
       border-bottom: 1px solid var(--rule);
     }
     .nav { display: flex; align-items: center; justify-content: space-between; height: 66px; }
-    .brand { font-family: var(--disp); font-weight: 700; font-size: 16px; letter-spacing: -.01em; display: flex; align-items: baseline; gap: 9px; }
+    .brand { font-family: var(--disp); font-weight: 700; font-size: 16px; letter-spacing: -.01em; display: flex; align-items: center; gap: 10px; }
+    .brand .avatar {
+      width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex: none;
+      border: 1px solid var(--rule); box-shadow: 0 0 0 2px var(--paper), 0 0 0 3px var(--accent);
+      transition: transform .18s ease;
+    }
+    .brand:hover .avatar { transform: rotate(-6deg) scale(1.06); }
     .brand .tag { font-family: var(--mono); font-size: 11px; color: var(--faint); font-weight: 400; letter-spacing: 0; }
     .nav-links { display: flex; gap: 6px; }
     .nav-links a {
@@ -147,27 +153,38 @@
         var(--panel);
       display: flex; align-items: center; padding: 40px;
     }
-    .datasheet { width: 100%; position: relative; }
-    .ds-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
-    .ds-tag { font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
-    .ds-live { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em; color: var(--ink-2); display: inline-flex; align-items: center; gap: 8px; }
-    .ds-live i { width: 8px; height: 8px; background: var(--accent); display: inline-block; animation: blink 1.4s steps(1) infinite; }
-    @keyframes blink { 0%,60% { opacity: 1; } 61%,100% { opacity: .18; } }
-    @media (prefers-reduced-motion: reduce) { .ds-live i { animation: none; } }
-    .datasheet h2 {
-      font-family: var(--disp); font-weight: 700; font-size: clamp(32px,4vw,44px);
-      letter-spacing: -.03em; line-height: 1; margin-bottom: 20px;
+    .datasheet {
+      width: 100%; position: relative; background: var(--panel);
+      border: 1px solid var(--rule); border-top: 3px solid #EE7C19;
+      padding: 26px 26px 24px;
+      transition: transform .18s ease, box-shadow .2s ease;
     }
-    .datasheet h2 span { color: var(--accent); }
-    .ds-rows { border-top: 1px solid var(--rule); margin-bottom: 24px; }
-    .ds-row { display: grid; grid-template-columns: 74px 1fr; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 12.5px; }
-    .ds-row dt { color: var(--faint); text-transform: uppercase; letter-spacing: .04em; }
-    .ds-row dd { color: var(--ink); }
-    .ds-cta { display: inline-flex; align-items: center; gap: 9px; width: 100%; justify-content: space-between; }
+    .datasheet:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 0 #EE7C19; }
+    .ds-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .pv-brand { display: flex; align-items: center; gap: 11px; }
+    .pv-badge {
+      width: 42px; height: 42px; display: grid; place-items: center; flex: none;
+      background: color-mix(in srgb, #F6A531 15%, var(--panel));
+      border: 1px solid color-mix(in srgb, #F6A531 34%, var(--rule));
+    }
+    .pv-mark { width: 25px; height: 25px; display: block; }
+    .pv-name { font-family: var(--disp); font-weight: 700; font-size: 18px; letter-spacing: -.02em; line-height: 1; }
+    .pv-name b { color: #E9591C; font-weight: 700; }
+    .ds-live { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #16a34a; display: inline-flex; align-items: center; gap: 7px; }
+    .ds-live i { width: 8px; height: 8px; border-radius: 50%; background: #16a34a; display: inline-block; animation: blink 1.6s steps(1) infinite; }
+    @keyframes blink { 0%,60% { opacity: 1; } 61%,100% { opacity: .2; } }
+    @media (prefers-reduced-motion: reduce) { .ds-live i, .build-head .r i { animation: none; } }
+    .ds-tagline { font-family: var(--disp); font-weight: 700; font-size: clamp(23px,2.7vw,29px); letter-spacing: -.03em; line-height: 1.06; margin-bottom: 12px; }
+    .ds-tagline span { color: #EE7C19; }
+    .ds-sub { font-family: var(--body); font-size: 14px; color: var(--ink-2); line-height: 1.55; margin-bottom: 20px; }
+    .ds-feats { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 22px; }
+    .ds-feats span { font-family: var(--mono); font-size: 11px; letter-spacing: .02em; padding: 5px 10px; border: 1px solid var(--rule); color: var(--ink-2); }
+    .ds-cta { display: inline-flex; align-items: center; gap: 9px; width: 100%; justify-content: space-between; background: #EE7C19; border-color: #EE7C19; }
+    .ds-cta:hover { box-shadow: 4px 4px 0 0 var(--ink); }
     /* crop marks on the datasheet */
     .datasheet::before, .datasheet::after { content: ""; position: absolute; width: 12px; height: 12px; }
-    .datasheet::before { top: -14px; left: -14px; border-top: 2px solid var(--accent); border-left: 2px solid var(--accent); }
-    .datasheet::after  { bottom: -14px; right: -14px; border-bottom: 2px solid var(--accent); border-right: 2px solid var(--accent); }
+    .datasheet::before { top: -14px; left: -14px; border-top: 2px solid #EE7C19; border-left: 2px solid #EE7C19; }
+    .datasheet::after  { bottom: -14px; right: -14px; border-bottom: 2px solid #EE7C19; border-right: 2px solid #EE7C19; }
 
     @media (max-width: 860px) {
       .hero-grid { grid-template-columns: 1fr; min-height: 0; }
@@ -197,8 +214,9 @@
     .lead { font-family: var(--disp); font-weight: 500; font-size: clamp(21px,3vw,32px); line-height: 1.38; letter-spacing: -.02em; max-width: 900px; }
     .lead b { font-weight: 700; color: var(--accent); }
     .notes { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; margin-top: 60px; border-top: 1px solid var(--rule); }
-    .note { padding: 26px 26px 8px 0; border-right: 1px solid var(--rule); }
-    .note:last-child { border-right: none; }
+    .note { padding: 26px 30px 8px; border-right: 1px solid var(--rule); }
+    .note:first-child { padding-left: 0; }
+    .note:last-child { border-right: none; padding-right: 0; }
     .note .ni { font-family: var(--mono); font-size: 12px; color: var(--accent); font-weight: 700; display: block; margin-bottom: 14px; }
     .note h4 { font-family: var(--disp); font-weight: 600; font-size: 17px; margin-bottom: 10px; letter-spacing: -.01em; }
     .note p { font-size: 14.5px; color: var(--ink-2); }
@@ -216,8 +234,9 @@
     .build-head .r { color: var(--ink-2); display: inline-flex; align-items: center; gap: 8px; }
     .build-head .r i { width: 8px; height: 8px; background: var(--accent); animation: blink 1.4s steps(1) infinite; }
     .build-body { display: grid; grid-template-columns: 1.3fr 1fr; gap: 30px; align-items: end; }
-    .build h4 { font-family: var(--disp); font-weight: 700; font-size: clamp(30px,4.4vw,50px); letter-spacing: -.03em; line-height: .98; margin-bottom: 14px; }
-    .build h4 span { color: var(--accent); }
+    .build h4 { font-family: var(--disp); font-weight: 700; font-size: clamp(30px,4.4vw,50px); letter-spacing: -.03em; line-height: .98; margin-bottom: 14px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .build-mark { width: clamp(28px,4vw,42px); height: clamp(28px,4vw,42px); flex: none; }
+    .build h4 span { color: #EE7C19; }
     .build p { font-size: 15px; color: var(--ink-2); max-width: 460px; }
     .build .spec { font-family: var(--mono); font-size: 12px; }
     .build .spec div { display: grid; grid-template-columns: 66px 1fr; gap: 12px; padding: 9px 0; border-top: 1px solid var(--rule); }
@@ -283,9 +302,23 @@
 </head>
 <body>
 
+  <!-- PropertyVerse logo (from propertyverse.isuryakarthikvarma.online) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="pv-logo" viewBox="0 0 96 97">
+      <path d="M91.8209 30.0022L63.6005 64.286L59.8549 40.9404L30.1458 77.0287L26.3988 53.5039L8.40466 75.3641C22.015 94.7368 47.3429 100.818 67.9295 91.2623C84.2269 83.6968 95.5076 67.3003 95.5076 48.2846C95.5157 42.0082 94.2623 35.7931 91.8209 30.0022V30.0022Z" fill="#F6A531"/>
+      <path d="M27.6111 4.67494C11.3044 12.2699 5.29214e-05 28.777 5.29214e-05 47.9236C-0.0130588 56.6983 2.41046 65.3052 7.00176 72.7893L31.9069 31.8196V31.7854L31.9192 31.8141L35.6645 55.483L65.3653 19.1763L69.1174 42.6676C69.1174 42.6676 78.799 30.8359 87.103 20.671C73.4926 1.21833 48.2205 -4.94619 27.6111 4.67494Z" fill="#F6A531"/>
+      <path d="M64.9452 19.5154L35.7744 55.2161L32.0906 31.9422L50.8931 0.967773C54.7877 1.22414 58.6347 1.96749 62.3441 3.18043L64.9452 19.5154Z" fill="#EE7C19"/>
+      <path d="M74.114 8.20126L65.2635 19.3052L62.6531 2.49585C66.7091 3.8545 70.565 5.77404 74.114 8.20126V8.20126Z" fill="#E9591C"/>
+      <path d="M87.1031 21.047C78.6386 31.1836 68.77 42.9911 68.77 42.9911L64.9453 19.5559L74.0979 8.6084C79.1907 11.9249 83.6019 16.1439 87.1031 21.047V21.047Z" fill="#E53312"/>
+      <path d="M64.1812 64.1997L38.9163 94.9473C36.9737 94.5695 35.057 94.071 33.1773 93.4547L30.5625 77.0271L60.4172 40.699L64.1812 64.1997Z" fill="#EE7C19"/>
+      <path d="M95.5076 48.2433C95.5076 67.2174 84.4281 83.578 68.4314 91.127L64.1812 64.2111L91.888 30.0022C94.2848 35.78 95.5153 41.9811 95.5076 48.2433Z" fill="#E53312"/>
+      <path d="M51.1921 0.308009L31.8471 32.2941L27.5062 4.73635C33.9039 1.74073 40.8807 0.193339 47.9417 0.203959C49.0321 0.199797 50.1128 0.233093 51.1921 0.308009Z" fill="#F2931A"/>
+    </symbol>
+  </svg>
+
   <header>
     <div class="wrap nav">
-      <a href="#" class="brand">Surya Karthik Varma<span class="tag">/ SKV</span></a>
+      <a href="#" class="brand"><img class="avatar" src="assets/surya.png" alt="Surya Karthik Varma" />Surya Karthik Varma<span class="tag">/ SKV</span></a>
       <nav class="nav-links">
         <a href="#about">01 About</a>
         <a href="#work">02 Work</a>
@@ -319,17 +352,16 @@
       <div class="hero-right">
         <a class="datasheet" href="https://propertyverse.isuryakarthikvarma.online/" target="_blank" rel="noopener">
           <div class="ds-head">
-            <span class="ds-tag">◢ Live build</span>
-            <span class="ds-live"><i></i>Deployed</span>
+            <span class="pv-brand">
+              <span class="pv-badge"><svg class="pv-mark"><use href="#pv-logo"/></svg></span>
+              <span class="pv-name">Property<b>Verse</b></span>
+            </span>
+            <span class="ds-live"><i></i>Live</span>
           </div>
-          <h2>Property<span>verse</span></h2>
-          <dl class="ds-rows">
-            <div class="ds-row"><dt>Type</dt><dd>AI real-estate CRM</dd></div>
-            <div class="ds-row"><dt>Does</dt><dd>Generates &amp; qualifies leads</dd></div>
-            <div class="ds-row"><dt>Stack</dt><dd>Node JS · AI · Full-stack</dd></div>
-            <div class="ds-row"><dt>Users</dt><dd>Live, in production</dd></div>
-          </dl>
-          <span class="btn btn-accent ds-cta">Open live site <span>↗</span></span>
+          <p class="ds-tagline">The real-estate CRM<br/><span>in your pocket.</span></p>
+          <p class="ds-sub">Capture every call with voice AI, organise your entire pipeline, and follow up automatically.</p>
+          <div class="ds-feats"><span>Voice AI</span><span>Pipeline</span><span>Auto follow-up</span></div>
+          <span class="btn ds-cta">Open live site <span>↗</span></span>
         </a>
       </div>
     </div>
@@ -388,8 +420,8 @@
         </div>
         <div class="build-body">
           <div>
-            <h4>Property<span>verse</span></h4>
-            <p>An AI-powered real-estate CRM that generates &amp; qualifies leads, manages properties and runs the full sales pipeline across web and mobile.</p>
+            <h4><svg class="build-mark"><use href="#pv-logo"/></svg>Property<span>verse</span></h4>
+            <p>An AI-powered real-estate CRM that captures every call with voice AI, organises your pipeline and follows up automatically — built for real-estate agents.</p>
           </div>
           <div>
             <dl class="spec">
