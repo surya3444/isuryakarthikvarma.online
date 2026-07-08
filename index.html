@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Surya Karthik Varma — Full-Stack &amp; Applied-AI Engineer</title>
+  <link rel="icon" type="image/png" href="assets/surya.png" />
+  <link rel="apple-touch-icon" href="assets/surya.png" />
+  <meta name="description" content="Surya Karthik Varma Indukuri — full-stack product engineer building CRMs, marketplaces and AI systems in Python." />
+
+  <meta property="og:title" content="Surya Karthik Varma — Full-Stack & Applied-AI Engineer" />
+  <meta property="og:description" content="I build software that runs businesses — CRMs, marketplaces and AI systems in Python." />
+  <meta property="og:image" content="https://isuryakarthikvarma.online/assets/surya.png" />
+  <meta property="og:url" content="https://isuryakarthikvarma.online" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #0a0a0a;
+      --paper: #ffffff;
+      --gray-1: #6b6b6b;
+      --gray-2: #9b9b9b;
+      --line: #e6e6e6;
+      --soft: #f5f5f5;
+      --max: 1080px;
+      --disp: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      --body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      /* per-section backgrounds */
+      --bg-about: #f6f8fb;
+      --bg-work: #ffffff;
+      --bg-skills: #f4f2ef;
+      --bg-contact: #f7f5fb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #f2f2f2;
+        --paper: #0a0a0a;
+        --gray-1: #9b9b9b;
+        --gray-2: #6b6b6b;
+        --line: #232323;
+        --soft: #131313;
+
+        --bg-about: #0d1117;
+        --bg-work: #0a0a0a;
+        --bg-skills: #14110d;
+        --bg-contact: #100d17;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--body);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      font-size: 16px;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+    section { padding: 92px 0; }
+    ::selection { background: var(--ink); color: var(--paper); }
+
+    /* ---------- Nav ---------- */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: color-mix(in srgb, var(--paper) 86%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .brand { font-family: var(--disp); font-weight: 700; font-size: 17px; letter-spacing: -.01em; }
+    .brand .dot { color: var(--gray-2); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-size: 14.5px; color: var(--gray-1); transition: color .15s; position: relative; }
+    .nav-links a:hover { color: var(--ink); }
+    @media (max-width: 720px) { .nav-links { display: none; } }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 84px 0 72px; }
+    .tagline { font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--gray-2); margin-bottom: 26px; }
+    h1 {
+      font-family: var(--disp); font-weight: 700; letter-spacing: -.035em;
+      font-size: clamp(40px, 6.2vw, 72px); line-height: 1.02; margin-bottom: 26px;
+    }
+    h1 em { font-style: normal; color: var(--gray-2); }
+    .hero p { font-size: clamp(16px, 2vw, 18.5px); color: var(--gray-1); max-width: 560px; margin-bottom: 34px; }
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--ink); color: var(--paper);
+      font-family: var(--disp); font-weight: 500; font-size: 14.5px;
+      padding: 13px 24px; border-radius: 2px; transition: opacity .15s, transform .12s;
+    }
+    .btn:hover { opacity: .82; transform: translateY(-1px); }
+    .btn-line { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+    .btn-line:hover { background: var(--ink); color: var(--paper); opacity: 1; }
+
+    /* ---------- Marquee divider ---------- */
+    .strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; }
+    .strip .track { display: flex; gap: 48px; white-space: nowrap; padding: 20px 0; animation: slide 26s linear infinite; }
+    .strip span { font-family: var(--disp); font-weight: 500; font-size: 15px; letter-spacing: .04em; color: var(--gray-1); display: inline-flex; align-items: center; gap: 48px; }
+    .strip span::after { content: "✦"; color: var(--gray-2); font-size: 11px; }
+    @keyframes slide { to { transform: translateX(-50%); } }
+
+    /* ---------- Section header ---------- */
+    .head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 44px; }
+    .head .idx { font-family: var(--disp); font-size: 14px; color: var(--gray-2); }
+    .head h2 { font-family: var(--disp); font-weight: 700; font-size: clamp(26px, 4vw, 38px); letter-spacing: -.03em; }
+
+    /* ---------- About ---------- */
+    .about-lead { font-family: var(--disp); font-weight: 400; font-size: clamp(20px, 3vw, 30px); line-height: 1.4; letter-spacing: -.02em; max-width: 780px; }
+    .about-lead b { font-weight: 600; }
+    .about-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
+    .about-cols p { font-size: 15px; color: var(--gray-1); }
+    .about-cols h4 { font-family: var(--disp); font-size: 14px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; }
+    @media (max-width: 720px) { .about-cols { grid-template-columns: 1fr; gap: 24px; } }
+
+    /* ---------- Work list ---------- */
+    .work-list { border-top: 1px solid var(--line); }
+    .row {
+      display: grid; grid-template-columns: 44px 1.4fr 1.6fr auto; gap: 20px; align-items: center;
+      padding: 26px 4px; border-bottom: 1px solid var(--line);
+      transition: padding .2s ease, background .2s;
+    }
+    .row:hover { padding-left: 14px; padding-right: 14px; }
+    .row .n { font-family: var(--disp); font-size: 14px; color: var(--gray-2); }
+    .row .title { font-family: var(--disp); font-weight: 600; font-size: clamp(18px, 2.4vw, 22px); letter-spacing: -.01em; }
+    .row .desc { font-size: 14.5px; color: var(--gray-1); }
+    .row .meta { display: flex; gap: 8px; align-items: center; justify-content: flex-end; }
+    .row .meta em { font-style: normal; font-size: 12px; letter-spacing: .05em; text-transform: uppercase; color: var(--gray-2); border: 1px solid var(--line); padding: 4px 9px; border-radius: 2px; white-space: nowrap; }
+    .row .arrow { font-size: 18px; color: var(--gray-2); transition: transform .2s, color .2s; }
+    .row:hover .arrow { transform: translate(3px,-3px); color: var(--ink); }
+    @media (max-width: 780px) {
+      .row { grid-template-columns: 30px 1fr auto; }
+      .row .desc { display: none; }
+    }
+
+    /* ---------- Section backgrounds ---------- */
+    #about { background: var(--bg-about); }
+    #work { background: var(--bg-work); }
+    #skills { background: var(--bg-skills); }
+    #contact { background: var(--bg-contact); }
+
+    /* ---------- Skills ---------- */
+    .skill-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px 24px; }
+    .skill-grid h4 { font-family: var(--disp); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--gray-2); margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .skill-grid ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .skill-grid li { font-size: 15px; }
+    @media (max-width: 720px) { .skill-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ---------- Contact ---------- */
+    #contact { text-align: center; }
+    #contact .big { font-family: var(--disp); font-weight: 700; font-size: clamp(34px, 7vw, 78px); letter-spacing: -.04em; line-height: 1.05; }
+    #contact a.mail { border-bottom: 2px solid var(--ink); transition: opacity .15s; }
+    #contact a.mail:hover { opacity: .6; }
+    #contact p { color: var(--gray-1); margin: 22px auto 34px; max-width: 460px; }
+
+    /* ---------- Footer ---------- */
+    footer { border-top: 1px solid var(--line); padding: 34px 0; }
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .foot .c { font-size: 13.5px; color: var(--gray-2); }
+    .foot-links { display: flex; gap: 24px; }
+    .foot-links a { font-size: 13.5px; color: var(--gray-1); transition: color .15s; }
+    .foot-links a:hover { color: var(--ink); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap nav">
+      <a href="#" class="brand">Surya Karthik Varma<span class="dot">.</span></a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#skills">Stack</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="tagline">Full-Stack · Applied AI · Civil Engineering</div>
+        <h1>I build software that <em>runs businesses.</em></h1>
+        <p>
+          Final-year Civil Engineering student and full-stack product engineer.
+          I design CRMs, marketplaces and AI systems — mostly in Python.
+        </p>
+        <div class="actions">
+          <a href="#work" class="btn">View my work</a>
+          <a href="mailto:contact@isuryakarthikvarma.online" class="btn btn-line">Get in touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="strip">
+    <div class="track">
+      <span>Node.js</span><span>Python</span><span>Express.js</span><span>Civil Engineering</span><span>TypeScript</span><span>React</span><span>Machine Learning</span><span>CRM &amp; SaaS</span>
+      <span>Node.js</span><span>Python</span><span>Express.js</span><span>Civil Engineering</span><span>TypeScript</span><span>React</span><span>Machine Learning</span><span>CRM &amp; SaaS</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="head"><span class="idx">01</span><h2>About</h2></div>
+      <p class="about-lead">
+        I'm a <b>Civil Engineering</b> student who fell for software and never looked back — now shipping
+        real products at the intersection of <b>business software and AI</b>. My engineering
+        background is my edge: I build serious, Python-powered apps the way I'd design a structure.
+      </p>
+      <div class="about-cols">
+        <div>
+          <h4>Foundation</h4>
+          <p>Final-year Civil Engineering. It taught me to think in systems, constraints and structures — exactly how good software gets built.</p>
+        </div>
+        <div>
+          <h4>Focus</h4>
+          <p>Full-stack product engineering: CRMs, marketplaces and internal tools, from database to interface, end to end.</p>
+        </div>
+        <div>
+          <h4>Next</h4>
+          <p>Going deep on AI &amp; Machine Learning — so the tools I ship don't just manage data, they reason about it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="wrap">
+      <div class="head"><span class="idx">02</span><h2>Selected work</h2></div>
+      <div class="work-list">
+        <a class="row" href="https://github.com/surya3444/propertyverse" target="_blank" rel="noopener">
+          <span class="n">01</span>
+          <span class="title">Propertyverse</span>
+          <span class="desc">AI-based CRM that generates real-estate leads &amp; manages properties across web and mobile.</span>
+          <span class="meta"><em>AI CRM</em><span class="arrow">↗</span></span>
+        </a>
+        <a class="row" href="https://github.com/surya3444/Grape-Crm" target="_blank" rel="noopener">
+          <span class="n">02</span>
+          <span class="title">Grape CRM</span>
+          <span class="desc">A centralized CRM engine designed to fit into any industry.</span>
+          <span class="meta"><em>SaaS</em><span class="arrow">↗</span></span>
+        </a>
+        <a class="row" href="https://github.com/surya3444/Flight-Risk-Prediction-System-Using-ML" target="_blank" rel="noopener">
+          <span class="n">03</span>
+          <span class="title">Flight Risk Prediction</span>
+          <span class="desc">ML system predicting flight risk, served through a Python model API.</span>
+          <span class="meta"><em>Machine Learning</em><span class="arrow">↗</span></span>
+        </a>
+        <a class="row" href="https://github.com/surya3444/marketplace" target="_blank" rel="noopener">
+          <span class="n">04</span>
+          <span class="title">Marketplace</span>
+          <span class="desc">A platform connecting buyers and sellers with listings, discovery and transactions.</span>
+          <span class="meta"><em>Platform</em><span class="arrow">↗</span></span>
+        </a>
+        <a class="row" href="https://github.com/surya3444/p2p-cloud-app" target="_blank" rel="noopener">
+          <span class="n">05</span>
+          <span class="title">P2P Cloud</span>
+          <span class="desc">A "cloud app that can run without cloud" — distributed across peers by design.</span>
+          <span class="meta"><em>Systems</em><span class="arrow">↗</span></span>
+        </a>
+        <a class="row" href="https://github.com/surya3444" target="_blank" rel="noopener">
+          <span class="n">06</span>
+          <span class="title">More on GitHub</span>
+          <span class="desc">NGO platform, mood-based music player, and 15+ other repositories.</span>
+          <span class="meta"><em>Archive</em><span class="arrow">↗</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="head"><span class="idx">03</span><h2>Stack</h2></div>
+      <div class="skill-grid">
+        <div><h4>Civil Engineering</h4><ul><li>AutoCAD</li><li>Structural Analysis</li><li>Surveying</li><li>Project Planning</li></ul></div>
+        <div><h4>Backend</h4><ul><li>Node.js</li><li>Express.js</li><li>Python</li><li>REST APIs</li><li>SQL</li></ul></div>
+        <div><h4>Frontend</h4><ul><li>TypeScript</li><li>JavaScript</li><li>React</li><li>HTML / CSS</li></ul></div>
+        <div><h4>AI &amp; Data</h4><ul><li>Machine Learning</li><li>Pandas / NumPy</li><li>scikit-learn</li><li>LLM integration</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="head" style="justify-content:center"><span class="idx">04</span><h2>Contact</h2></div>
+      <div class="big">Let's build<br/>something<br/><a href="mailto:isuryakarthikvarma@gmail.com" class="mail">together.</a></div>
+      <p>Open to internships, freelance product work, and collaborations in SaaS &amp; applied AI.</p>
+      <div class="actions" style="justify-content:center">
+        <a href="mailto:isuryakarthikvarma@gmail.com" class="btn">Email me</a>
+        <a href="https://www.linkedin.com/in/surya-karthik-72169138b/" target="_blank" rel="noopener" class="btn btn-line">LinkedIn ↗</a>
+        <a href="https://github.com/surya3444" target="_blank" rel="noopener" class="btn btn-line">GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <span class="c">© <span id="year"></span> Indukuri Surya Karthik Varma</span>
+      <div class="foot-links">
+        <a href="https://github.com/surya3444" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/surya-karthik-72169138b/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:isuryakarthikvarma@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
